@@ -38,14 +38,14 @@ function draw() {
 }
 
 function mousePressed() {
-	background(255);  // Limpia el canvas
+	background(255,0);  // Limpia el canvas
 	dots = [];        // Borra los puntos
 	drawingEnabled = false; // Detiene el dibujo
 }
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
-	background(255); // Reestablece el fondo blanco al redimensionar
+	background(255,0); // Reestablece el fondo blanco al redimensionar
 }
 
 class ColorDot {
@@ -68,7 +68,7 @@ class ColorDot {
 	}
 
 	display() {
-		fill(255);       // Relleno blanco (igual al fondo)
+		fill(255,0);       // Relleno blanco (igual al fondo)
 		stroke(0);       // Borde negro
 		ellipse(this.x, this.y, this.d, this.d);
 	}
