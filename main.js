@@ -68,7 +68,7 @@ class ColorDot {
 	}
 
 	display() {
-		fill(255,0);       // Relleno blanco (igual al fondo)
+		fill(255);       // Relleno blanco (igual al fondo)
 		stroke(0);       // Borde negro
 		ellipse(this.x, this.y, this.d, this.d);
 	}
