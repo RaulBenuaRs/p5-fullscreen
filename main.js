@@ -4,7 +4,7 @@ let drawingEnabled = true;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	background(255); // Fondo blanco
+	background(255,0); // Fondo blanco
 	prevx = mouseX;
 	prevy = mouseY;
 }
