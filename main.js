@@ -1,27 +1,22 @@
 let prevx, prevy;
 let dots = [];
-let drawingEnabled = true;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	background(255,0); // Fondo blanco
-	prevx = mouseX;
-	prevy = mouseY;
+	clearAll(); // función que reinicia todo
 }
 
 function draw() {
-	if (drawingEnabled) {
-		let v = createVector(mouseX - prevx, mouseY - prevy);
-		let numofpts = int(v.mag() / 4) + 1;
-		let vs = v.div(numofpts);
+	let v = createVector(mouseX - prevx, mouseY - prevy);
+	let numofpts = int(v.mag() / 4) + 1;
+	let vs = v.div(numofpts);
 
-		strokeWeight(0.25);
-		stroke(0); // Línea negra
-		for (let i = 0; i < numofpts; i += 1) {
-			let sx = mouseX - (vs.x * i);
-			let sy = mouseY - (vs.y * i);
-			dots.push(new ColorDot(sx, sy, color(0)))
-		}
+	strokeWeight(0.25);
+	stroke(0); // Línea negra
+	for (let i = 0; i < numofpts; i += 1) {
+		let sx = mouseX - (vs.x * i);
+		let sy = mouseY - (vs.y * i);
+		dots.push(new ColorDot(sx, sy, color(0)));
 	}
 
 	for (let j = dots.length - 1; j >= 0; j--) {
@@ -38,14 +33,20 @@ function draw() {
 }
 
 function mousePressed() {
-	background(255,0);  // Limpia el canvas
-	dots = [];        // Borra los puntos
-	drawingEnabled = false; // Detiene el dibujo
+	clearAll();
 }
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
-	background(255,0); // Reestablece el fondo blanco al redimensionar
+	clearAll();
+}
+
+function clearAll() {
+	clear();                  // Limpia completamente (incluye transparencia)
+	background(255, 0);       // Blanco con alpha 0 (transparente)
+	dots = [];                // Borra puntos
+	prevx = mouseX;
+	prevy = mouseY;
 }
 
 class ColorDot {
